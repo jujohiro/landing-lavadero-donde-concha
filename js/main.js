@@ -7,7 +7,11 @@ const WHATSAPP_MESSAGES = {
     soporte: 'Hola, tengo una consulta sobre mi servicio en Donde Concha.'
 };
 
-const MAPS_URL = 'https://www.google.com/maps/place/Donde+Concha+Car+Detailing+y+Caf%C3%A9/@4.554637,-75.651507,17z';
+const MAPS_ADDRESS = 'Dónde Concha Car Detailing y Café, Cra. 6 #17 Norte -56, Armenia, Quindío, Colombia';
+const MAPS_COORDS = '4.554637,-75.651507';
+
+// Indicaciones con coordenadas exactas y nombre del negocio en el destino
+const MAPS_URL = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${MAPS_COORDS} (${MAPS_ADDRESS})`)}&travelmode=driving`;
 const INSTAGRAM_URL = 'https://www.instagram.com/DONDECONCHACARWASH';
 
 const utils = {
