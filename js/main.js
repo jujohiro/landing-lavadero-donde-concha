@@ -10,9 +10,8 @@ const WHATSAPP_MESSAGES = {
 const MAPS_URL = 'https://www.google.com/maps/search/?api=1&query=Avenida+Centenario+Calle+17+Norte+Armenia+Quindio+Colombia';
 const INSTAGRAM_URL = 'https://www.instagram.com/DONDECONCHACARWASH';
 
-// Pega aquí la URL de un Reel o publicación de Instagram (debe ser pública)
-// Ejemplo: 'https://www.instagram.com/reel/XXXXXXXXX/'
-const INSTAGRAM_EMBED_URL = '';
+// Reel oficial de Donde Concha Car Wash & Café
+const INSTAGRAM_EMBED_URL = 'https://www.instagram.com/reel/C61s6B5J42o/';
 
 const utils = {
     validatePhone(phone) {
