@@ -1,4 +1,4 @@
-const WHATSAPP_NUMBER = '573126411889';
+const WHATSAPP_NUMBER = '573104622183';
 const WHATSAPP_BASE_URL = 'https://wa.me/';
 
 const WHATSAPP_MESSAGES = {
