@@ -35,12 +35,12 @@ landing/
 
 ## Despliegue en Vercel
 
-1. Sube el repositorio a GitHub
-2. Importa el proyecto en [vercel.com](https://vercel.com)
-3. **Root Directory:** `landing`
-4. **Framework Preset:** Other
-5. **Build Command:** (vacío)
-6. **Output Directory:** (vacío)
+1. Importa el repo en [vercel.com](https://vercel.com)
+2. **Root Directory:** dejar vacío (raíz del repo)
+3. **Framework Preset:** Other
+4. **Build Command:** (vacío)
+5. **Output Directory:** (vacío)
+6. Deploy
 
 ## Logo
 
