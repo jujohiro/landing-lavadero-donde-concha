@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="es" class="">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Donde Concha Car Wash & Café - Lavado de autos, camionetas y motos en Armenia, Quindío. Tarifas desde $25.000. Abierto lun-dom 7am-7pm.">
+    <meta name="keywords"
+        content="lavadero, car wash, Armenia, Quindío, lavado de autos, motos, Donde Concha, café">
+    <meta name="author" content="Donde Concha Car Wash & Café">
+
+    <meta property="og:title" content="Donde Concha Car Wash & Café | Lavadero en Armenia">
+    <meta property="og:description"
+        content="Lavado profesional de autos, camionetas y motos. Av. Centenario con Calle 17 Norte, Armenia, Quindío.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/logo-donde-concha.svg">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "AutoWash",
+        "name": "Donde Concha Car Wash & Café",
+        "description": "Lavadero de autos, camionetas y motos en Armenia, Quindío",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Avenida Centenario con Calle 17 Norte",
+            "addressLocality": "Armenia",
+            "addressRegion": "Quindío",
+            "addressCountry": "CO"
+        },
+        "telephone": "+573126411889",
+        "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+            "opens": "07:00",
+            "closes": "19:00"
+        }
+    }
+    </script>
+
+    <title>Donde Concha Car Wash & Café | Lavadero en Armenia, Quindío</title>
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet">
+
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#E31E24",
+                        secondary: "#1B3A5C",
+                        dark: "#152D47",
+                        accent: "#5BC0EB",
+                        "background-light": "#f8fafc",
+                        "background-dark": "#191919",
+                        "text-light": "#1e293b",
+                        "text-dark": "#F7FAFC",
+                        whatsapp: "#25d366"
+                    },
+                    fontFamily: {
+                        display: ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                        lg: "0.75rem",
+                        xl: "1rem",
+                        full: "9999px"
+                    }
+                }
+            }
+        };
+    </script>
+
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .hero-pattern {
+            background:
+                radial-gradient(circle at 20% 20%, rgba(91, 192, 235, 0.25) 0, transparent 45%),
+                radial-gradient(circle at 80% 10%, rgba(27, 58, 92, 0.2) 0, transparent 40%),
+                linear-gradient(135deg, #E31E24 0%, #1B3A5C 100%);
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark">
+    <div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+        <div class="layout-container flex h-full grow flex-col">
+            <div class="flex flex-1 justify-center py-5">
+                <div class="layout-content-container flex flex-col w-full max-w-7xl px-4">
+
+                    <header
+                        class="flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-200 dark:border-b-[#232f48] px-4 sm:px-10 py-4 sticky top-0 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm z-50">
+                        <div class="flex items-center gap-3">
+                            <img src="images/logo-donde-concha.svg" alt="Donde Concha Car Wash & Café"
+                                class="h-14 sm:h-16 w-auto object-contain rounded-lg">
+                            <div class="hidden sm:block">
+                                <h2 class="text-text-light dark:text-white text-lg font-bold leading-tight">Donde Concha
+                                </h2>
+                                <p class="text-xs text-accent font-semibold tracking-wider">CAR WASH & CAFÉ</p>
+                            </div>
+                        </div>
+
+                        <div class="hidden md:flex flex-1 justify-end gap-8 items-center">
+                            <div class="flex items-center gap-9">
+                                <a class="text-text-light dark:text-white text-sm font-medium hover:text-primary dark:hover:text-accent transition-colors"
+                                    href="#servicios">Servicios</a>
+                                <a class="text-text-light dark:text-white text-sm font-medium hover:text-primary dark:hover:text-accent transition-colors"
+                                    href="#tarifas">Tarifas</a>
+                                <a class="text-text-light dark:text-white text-sm font-medium hover:text-primary dark:hover:text-accent transition-colors"
+                                    href="#nosotros">Nosotros</a>
+                                <a class="text-text-light dark:text-white text-sm font-medium hover:text-primary dark:hover:text-accent transition-colors"
+                                    href="#contacto">Contacto</a>
+                            </div>
+
+                            <button id="themeToggle"
+                                class="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                                aria-label="Cambiar tema">
+                                <span class="material-symbols-outlined text-2xl dark:hidden">dark_mode</span>
+                                <span class="material-symbols-outlined text-2xl hidden dark:inline">light_mode</span>
+                            </button>
+
+                            <button
+                                class="flex min-w-[84px] cursor-pointer items-center justify-center rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold hover:bg-primary/90 transition-colors"
+                                id="btnSolicitarDemo">
+                                Reservar
+                            </button>
+
+                            <button
+                                class="flex min-w-[84px] cursor-pointer items-center justify-center rounded-lg h-10 px-4 bg-whatsapp text-white text-sm font-bold hover:bg-whatsapp/90 transition-colors"
+                                id="btnContactoWhatsApp">
+                                WhatsApp
+                            </button>
+                        </div>
+
+                        <button class="md:hidden text-text-light dark:text-white" id="menuToggle"
+                            aria-label="Abrir menú" aria-expanded="false">
+                            <span class="material-symbols-outlined text-3xl">menu</span>
+                        </button>
+                    </header>
+
+                    <nav class="md:hidden fixed top-0 right-0 w-80 max-w-[80%] h-full bg-background-light dark:bg-background-dark border-l border-gray-200 dark:border-[#232f48] transform translate-x-full transition-transform duration-300 z-50"
+                        id="navMenu">
+                        <div class="flex flex-col p-6 gap-4">
+                            <div class="flex justify-between items-center mb-4">
+                                <h3 class="text-lg font-bold">Menú</h3>
+                                <button class="text-text-light dark:text-white" id="closeMenu">
+                                    <span class="material-symbols-outlined text-3xl">close</span>
+                                </button>
+                            </div>
+                            <a class="text-base font-medium py-2 hover:text-primary" href="#servicios">Servicios</a>
+                            <a class="text-base font-medium py-2 hover:text-primary" href="#tarifas">Tarifas</a>
+                            <a class="text-base font-medium py-2 hover:text-primary" href="#nosotros">Nosotros</a>
+                            <a class="text-base font-medium py-2 hover:text-primary" href="#contacto">Contacto</a>
+                            <button
+                                class="flex w-full cursor-pointer items-center justify-center rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold mt-4"
+                                id="btnSolicitarDemoMobile">Reservar</button>
+                            <button
+                                class="flex w-full cursor-pointer items-center justify-center rounded-lg h-10 px-4 bg-whatsapp text-white text-sm font-bold"
+                                id="btnContactoWhatsAppMobile">WhatsApp</button>
+                        </div>
+                    </nav>
+
+                    <div class="md:hidden fixed inset-0 bg-black/50 opacity-0 invisible transition-opacity duration-300 z-40"
+                        id="menuOverlay"></div>
+
+                    <main class="flex flex-col gap-16 md:gap-24">
+
+                        <section
+                            class="flex flex-col-reverse lg:flex-row gap-12 px-4 py-16 text-center lg:text-left items-center">
+                            <div class="flex flex-col gap-6 max-w-xl">
+                                <div class="flex flex-col gap-4">
+                                    <span
+                                        class="inline-block w-fit mx-auto lg:mx-0 px-3 py-1 rounded-full bg-accent/20 text-secondary dark:text-accent text-sm font-semibold">
+                                        Armenia, Quindío
+                                    </span>
+                                    <h1 class="text-4xl md:text-6xl font-black leading-tight tracking-tighter">
+                                        Donde Concha Car Wash & Café
+                                    </h1>
+                                    <h2 class="text-lg md:text-xl font-normal text-gray-600 dark:text-gray-300">
+                                        Lavado profesional de autos, camionetas y motos. Servicio rápido, brillante y
+                                        con la mejor atención. Disfruta un café mientras esperas.
+                                    </h2>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                                        <span class="material-symbols-outlined text-base align-middle">schedule</span>
+                                        Lun – Dom · 7:00 a.m. – 7:00 p.m.
+                                    </p>
+                                </div>
+                                <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
+                                    <button
+                                        class="flex w-fit cursor-pointer items-center justify-center rounded-lg h-12 px-6 bg-whatsapp text-white text-base font-bold hover:bg-whatsapp/90 transition-colors"
+                                        id="btnHeroWhatsApp">
+                                        Reservar por WhatsApp
+                                    </button>
+                                    <a class="flex w-fit items-center justify-center rounded-lg h-12 px-6 bg-secondary text-white text-base font-bold hover:bg-secondary/90 transition-colors"
+                                        href="#tarifas">
+                                        Ver tarifas
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="w-full max-w-lg lg:max-w-none">
+                                <div
+                                    class="hero-pattern w-full aspect-square lg:aspect-video rounded-xl shadow-2xl flex flex-col items-center justify-center text-white p-8">
+                                    <span class="material-symbols-outlined text-7xl mb-4 opacity-90">local_car_wash</span>
+                                    <p class="text-2xl font-bold text-center">Tu carro brilla como nuevo</p>
+                                    <p class="text-accent text-sm mt-2 font-semibold tracking-widest">CAR WASH & CAFÉ
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="flex flex-col gap-10 px-4 py-10" id="servicios">
+                            <div class="flex flex-col gap-6 items-center text-center">
+                                <div class="flex flex-col gap-4 max-w-3xl">
+                                    <h2 class="text-3xl md:text-4xl font-black leading-tight tracking-tighter">
+                                        Nuestros Servicios
+                                    </h2>
+                                    <p class="text-base md:text-lg text-gray-600 dark:text-gray-300">
+                                        Calidad, detalle y acabado impecable para tu vehículo.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                <div
+                                    class="feature-card flex flex-col gap-4 rounded-xl border border-gray-200 dark:border-[#324467] bg-white dark:bg-[#192233] p-6 hover:shadow-lg transition-shadow">
+                                    <div class="text-5xl">🚗</div>
+                                    <h3 class="text-xl font-bold">Lavada sencilla</h3>
+                                    <p class="text-gray-600 dark:text-[#92a4c9] text-sm">Limpieza exterior completa para
+                                        dejar tu vehículo reluciente.</p>
+                                </div>
+                                <div
+                                    class="feature-card flex flex-col gap-4 rounded-xl border border-gray-200 dark:border-[#324467] bg-white dark:bg-[#192233] p-6 hover:shadow-lg transition-shadow">
+                                    <div class="text-5xl">✨</div>
+                                    <h3 class="text-xl font-bold">Desmanchada</h3>
+                                    <p class="text-gray-600 dark:text-[#92a4c9] text-sm">Eliminación de manchas difíciles
+                                        en la carrocería.</p>
+                                </div>
+                                <div
+                                    class="feature-card flex flex-col gap-4 rounded-xl border border-gray-200 dark:border-[#324467] bg-white dark:bg-[#192233] p-6 hover:shadow-lg transition-shadow">
+                                    <div class="text-5xl">💎</div>
+                                    <h3 class="text-xl font-bold">Brillada</h3>
+                                    <p class="text-gray-600 dark:text-[#92a4c9] text-sm">Acabado brillante manual o a
+                                        máquina para un look premium.</p>
+                                </div>
+                                <div
+                                    class="feature-card flex flex-col gap-4 rounded-xl border border-gray-200 dark:border-[#324467] bg-white dark:bg-[#192233] p-6 hover:shadow-lg transition-shadow">
+                                    <div class="text-5xl">🔧</div>
+                                    <h3 class="text-xl font-bold">Combo completo</h3>
+                                    <p class="text-gray-600 dark:text-[#92a4c9] text-sm">Lavada sencilla + brillada +
+                                        motor + chasis + grafitado.</p>
+                                </div>
+                                <div
+                                    class="feature-card flex flex-col gap-4 rounded-xl border border-gray-200 dark:border-[#324467] bg-white dark:bg-[#192233] p-6 hover:shadow-lg transition-shadow">
+                                    <div class="text-5xl">🪑</div>
+                                    <h3 class="text-xl font-bold">Cojinería</h3>
+                                    <p class="text-gray-600 dark:text-[#92a4c9] text-sm">Limpieza profunda de tapicería
+                                        interior.</p>
+                                </div>
+                                <div
+                                    class="feature-card flex flex-col gap-4 rounded-xl border border-gray-200 dark:border-[#324467] bg-white dark:bg-[#192233] p-6 hover:shadow-lg transition-shadow">
+                                    <div class="text-5xl">☕</div>
+                                    <h3 class="text-xl font-bold">Car Wash & Café</h3>
+                                    <p class="text-gray-600 dark:text-[#92a4c9] text-sm">Disfruta un café mientras
+                                        cuidamos tu vehículo.</p>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="flex flex-col gap-10 px-4 py-10" id="tarifas">
+                            <div class="flex flex-col gap-4 max-w-3xl mx-auto text-center">
+                                <h2 class="text-3xl md:text-4xl font-black leading-tight tracking-tighter">Tarifas</h2>
+                                <p class="text-base md:text-lg text-gray-600 dark:text-gray-300">
+                                    Precios claros y transparentes. Aplican términos y condiciones.
+                                </p>
+                            </div>
+
+                            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                                <div
+                                    class="pricing-card rounded-xl border-2 border-accent bg-white dark:bg-[#192233] overflow-hidden shadow-lg">
+                                    <div class="bg-accent px-6 py-4">
+                                        <h3 class="text-xl font-black text-secondary">Automóviles</h3>
+                                    </div>
+                                    <ul class="divide-y divide-gray-100 dark:divide-gray-700">
+                                        <li class="flex justify-between px-6 py-3 text-sm"><span>Lavada sencilla</span><span
+                                                class="font-bold text-primary">$30.000</span></li>
+                                        <li class="flex justify-between px-6 py-3 text-sm"><span>Desmanchada</span><span
+                                                class="font-bold text-primary">$30.000</span></li>
+                                        <li class="flex justify-between px-6 py-3 text-sm"><span>Brillada</span><span
+                                                class="font-bold text-primary">$30.000</span></li>
+                                        <li class="flex justify-between px-6 py-3 text-sm bg-accent/10"><span
+                                                class="font-semibold">Combo completo</span><span
+                                                class="font-bold text-primary">$90.000</span></li>
+                                        <li class="flex justify-between px-6 py-3 text-xs text-gray-500 px-6 pb-1">Sencilla
+                                            + brillada manual + motor + chasis + grafitado</li>
+                                        <li class="flex justify-between px-6 py-3 text-sm"><span>Brillada a máquina +
+                                                sencilla</span><span class="font-bold text-primary">$100.000</span></li>
+                                        <li class="flex justify-between px-6 py-3 text-sm"><span>Cojinería</span><span
+                                                class="font-bold text-primary">$210.000</span></li>
+                                    </ul>
+                                </div>
+
+                                <div
+                                    class="pricing-card rounded-xl border-2 border-primary bg-white dark:bg-[#192233] overflow-hidden shadow-lg ring-2 ring-primary/30">
+                                    <div class="bg-primary px-6 py-4">
+                                        <h3 class="text-xl font-black text-white">Camionetas y camperos</h3>
+                                    </div>
+                                    <ul class="divide-y divide-gray-100 dark:divide-gray-700">
+                                        <li class="flex justify-between px-6 py-3 text-sm"><span>Lavada sencilla</span><span
+                                                class="font-bold text-primary">$40.000</span></li>
+                                        <li class="flex justify-between px-6 py-3 text-sm"><span>Desmanchada</span><span
+                                                class="font-bold text-primary">$40.000</span></li>
+                                        <li class="flex justify-between px-6 py-3 text-sm"><span>Brillada</span><span
+                                                class="font-bold text-primary">$40.000</span></li>
+                                        <li class="flex justify-between px-6 py-3 text-sm bg-primary/10"><span
+                                                class="font-semibold">Combo completo</span><span
+                                                class="font-bold text-primary">$120.000</span></li>
+                                        <li class="flex justify-between px-6 py-3 text-xs text-gray-500 px-6 pb-1">Sencilla
+                                            + brillada + motor + chasis + grafitado gratis</li>
+                                        <li class="flex justify-between px-6 py-3 text-sm"><span>Brillada a
+                                                máquina</span><span class="font-bold text-primary">$120.000</span></li>
+                                        <li class="flex justify-between px-6 py-3 text-sm"><span>Cojinería</span><span
+                                                class="font-bold text-primary">$230.000</span></li>
+                                    </ul>
+                                </div>
+
+                                <div
+                                    class="pricing-card rounded-xl border-2 border-secondary bg-white dark:bg-[#192233] overflow-hidden shadow-lg">
+                                    <div class="bg-secondary px-6 py-4">
+                                        <h3 class="text-xl font-black text-white">Motos</h3>
+                                    </div>
+                                    <ul class="divide-y divide-gray-100 dark:divide-gray-700">
+                                        <li class="flex justify-between px-6 py-3 text-sm"><span>Moto pequeña</span><span
+                                                class="font-bold text-primary">$25.000</span></li>
+                                        <li class="flex justify-between px-6 py-3 text-sm"><span>Brillada a máquina (moto
+                                                pequeña)</span><span class="font-bold text-primary">$15.000</span></li>
+                                        <li class="flex justify-between px-6 py-3 text-sm"><span>Moto grande</span><span
+                                                class="font-bold text-primary">$30.000</span></li>
+                                        <li class="flex justify-between px-6 py-3 text-sm"><span>Brillada a máquina (moto
+                                                grande)</span><span class="font-bold text-primary">$20.000</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="flex flex-col gap-12 px-4 py-10" id="nosotros">
+                            <div class="flex flex-col gap-6 items-center text-center">
+                                <h2 class="text-3xl md:text-4xl font-black leading-tight tracking-tighter">Nosotros
+                                </h2>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div
+                                    class="description-item flex flex-col gap-4 rounded-xl border border-gray-200 dark:border-[#324467] bg-white dark:bg-[#192233] p-6">
+                                    <h3 class="text-2xl font-bold text-primary">¿Quiénes somos?</h3>
+                                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                                        Donde Concha es un lavadero en Armenia, Quindío, especializado en el cuidado de
+                                        autos, camionetas y motos. Combinamos servicio de calidad con la comodidad de
+                                        nuestro café mientras esperas.
+                                    </p>
+                                </div>
+                                <div
+                                    class="description-item flex flex-col gap-4 rounded-xl border border-gray-200 dark:border-[#324467] bg-white dark:bg-[#192233] p-6">
+                                    <h3 class="text-2xl font-bold text-primary">Ubicación y horario</h3>
+                                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                                        <strong>Dirección:</strong> Avenida Centenario con Calle 17 Norte, Armenia,
+                                        Quindío.<br><br>
+                                        <strong>Horario:</strong> Lunes a domingo, de 7:00 a.m. a 7:00 p.m.
+                                    </p>
+                                    <button id="btnMaps"
+                                        class="w-fit flex items-center gap-2 px-4 py-2 rounded-lg bg-secondary text-white text-sm font-bold hover:bg-secondary/90">
+                                        <span class="material-symbols-outlined text-base">location_on</span>
+                                        Cómo llegar
+                                    </button>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="flex flex-col gap-10 px-4 py-10" id="beneficios">
+                            <div class="flex flex-col gap-4 max-w-3xl mx-auto text-center">
+                                <h2 class="text-3xl md:text-4xl font-black leading-tight tracking-tighter">¿Por qué
+                                    elegirnos?</h2>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                                <div
+                                    class="benefit-card flex flex-col items-center text-center gap-3 p-6 rounded-xl bg-gradient-to-br from-primary to-secondary text-white">
+                                    <div class="text-4xl">⏱️</div>
+                                    <h3 class="text-lg font-bold">Servicio rápido</h3>
+                                    <p class="text-sm opacity-95">Atención ágil sin sacrificar calidad.</p>
+                                </div>
+                                <div
+                                    class="benefit-card flex flex-col items-center text-center gap-3 p-6 rounded-xl bg-gradient-to-br from-secondary to-dark text-white">
+                                    <div class="text-4xl">✓</div>
+                                    <h3 class="text-lg font-bold">Acabado impecable</h3>
+                                    <p class="text-sm opacity-95">Detalle en cada lavado y brillada.</p>
+                                </div>
+                                <div
+                                    class="benefit-card flex flex-col items-center text-center gap-3 p-6 rounded-xl bg-gradient-to-br from-primary to-secondary text-white">
+                                    <div class="text-4xl">💰</div>
+                                    <h3 class="text-lg font-bold">Precios claros</h3>
+                                    <p class="text-sm opacity-95">Tarifas transparentes para cada tipo de vehículo.</p>
+                                </div>
+                                <div
+                                    class="benefit-card flex flex-col items-center text-center gap-3 p-6 rounded-xl bg-gradient-to-br from-secondary to-dark text-white">
+                                    <div class="text-4xl">☕</div>
+                                    <h3 class="text-lg font-bold">Café mientras esperas</h3>
+                                    <p class="text-sm opacity-95">Ambiente cómodo en Car Wash & Café.</p>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="px-4 py-16 bg-gray-100 dark:bg-black/20 rounded-xl" id="contacto">
+                            <div class="max-w-4xl mx-auto text-center flex flex-col gap-8">
+                                <div class="flex flex-col gap-4">
+                                    <h2 class="text-3xl md:text-4xl font-black leading-tight tracking-tighter">
+                                        Reserva tu lavado
+                                    </h2>
+                                    <p class="text-base md:text-lg text-gray-600 dark:text-gray-300">
+                                        Completa el formulario y te redirigiremos a WhatsApp para confirmar tu cita.
+                                    </p>
+                                </div>
+
+                                <form class="w-full max-w-2xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-4 text-left"
+                                    id="demoForm" novalidate>
+                                    <div>
+                                        <label class="block text-sm font-medium mb-1" for="demoName">Nombre *</label>
+                                        <input
+                                            class="w-full rounded-lg border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:ring-primary focus:border-primary px-4 py-2"
+                                            id="demoName" name="name" placeholder="Tu nombre" type="text" required>
+                                        <span class="error-message text-red-500 text-xs mt-1 block min-h-[20px]"
+                                            id="demoNameError"></span>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium mb-1" for="demoPhone">Teléfono *</label>
+                                        <input
+                                            class="w-full rounded-lg border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:ring-primary focus:border-primary px-4 py-2"
+                                            id="demoPhone" name="phone" placeholder="3126411889" type="tel" required>
+                                        <span class="error-message text-red-500 text-xs mt-1 block min-h-[20px]"
+                                            id="demoPhoneError"></span>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium mb-1" for="demoVehicle">Vehículo *</label>
+                                        <input
+                                            class="w-full rounded-lg border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:ring-primary focus:border-primary px-4 py-2"
+                                            id="demoVehicle" name="vehicle" placeholder="Ej: Automóvil sedan"
+                                            type="text" required>
+                                        <span class="error-message text-red-500 text-xs mt-1 block min-h-[20px]"
+                                            id="demoVehicleError"></span>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium mb-1" for="demoService">Servicio *</label>
+                                        <select
+                                            class="w-full rounded-lg border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:ring-primary focus:border-primary px-4 py-2"
+                                            id="demoService" name="service" required>
+                                            <option value="">Selecciona un servicio</option>
+                                            <optgroup label="Automóvil">
+                                                <option>Lavada sencilla - $30.000</option>
+                                                <option>Combo automóvil - $90.000</option>
+                                                <option>Brillada a máquina + sencilla - $100.000</option>
+                                                <option>Cojinería automóvil - $210.000</option>
+                                            </optgroup>
+                                            <optgroup label="Camioneta / Campero">
+                                                <option>Lavada sencilla - $40.000</option>
+                                                <option>Combo camioneta - $120.000</option>
+                                                <option>Brillada a máquina - $120.000</option>
+                                                <option>Cojinería camioneta - $230.000</option>
+                                            </optgroup>
+                                            <optgroup label="Moto">
+                                                <option>Moto pequeña - $25.000</option>
+                                                <option>Moto grande - $30.000</option>
+                                            </optgroup>
+                                        </select>
+                                        <span class="error-message text-red-500 text-xs mt-1 block min-h-[20px]"
+                                            id="demoServiceError"></span>
+                                    </div>
+                                    <div class="sm:col-span-2">
+                                        <label class="block text-sm font-medium mb-1" for="demoMessage">Mensaje
+                                            (opcional)</label>
+                                        <textarea
+                                            class="w-full rounded-lg border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:ring-primary focus:border-primary px-4 py-2"
+                                            id="demoMessage" name="message"
+                                            placeholder="Hora preferida, observaciones..." rows="3"></textarea>
+                                    </div>
+                                    <div class="sm:col-span-2 flex justify-center">
+                                        <button
+                                            class="w-full sm:w-auto flex cursor-pointer items-center justify-center rounded-lg h-12 px-8 bg-whatsapp text-white text-base font-bold hover:bg-whatsapp/90 transition-colors"
+                                            type="submit" id="demoSubmit">
+                                            Enviar por WhatsApp
+                                        </button>
+                                    </div>
+                                    <div class="sm:col-span-2">
+                                        <div class="form-message mt-4 p-4 rounded-lg text-center font-medium hidden"
+                                            id="demoFormMessage"></div>
+                                    </div>
+                                </form>
+                            </div>
+                        </section>
+                    </main>
+
+                    <footer class="px-4 py-12 border-t border-gray-200 dark:border-gray-800 mt-16">
+                        <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                            <div class="flex flex-col md:flex-row items-center gap-6">
+                                <img src="images/logo-donde-concha.svg" alt="Donde Concha"
+                                    class="h-14 w-auto object-contain rounded-lg">
+                                <div class="text-sm text-gray-600 dark:text-gray-400 text-center md:text-left">
+                                    <p class="font-bold text-text-light dark:text-white mb-1">Donde Concha Car Wash &
+                                        Café</p>
+                                    <p>Av. Centenario con Calle 17 Norte</p>
+                                    <p>Armenia, Quindío, Colombia</p>
+                                    <p class="mt-2">Lun – Dom · 7:00 a.m. – 7:00 p.m.</p>
+                                    <p>WhatsApp: +57 312 641 1889</p>
+                                    <p>Instagram: @DONDECONCHACARWASH</p>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-col gap-2">
+                                <button id="btnFooterContacto"
+                                    class="flex cursor-pointer items-center justify-center rounded-lg h-10 px-4 bg-whatsapp text-white text-sm font-bold hover:bg-whatsapp/90">
+                                    Contacto WhatsApp
+                                </button>
+                                <button id="btnFooterReservar"
+                                    class="flex cursor-pointer items-center justify-center rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold hover:bg-primary/90">
+                                    Reservar ahora
+                                </button>
+                                <button id="btnInstagram"
+                                    class="flex cursor-pointer items-center justify-center rounded-lg h-10 px-4 bg-secondary text-white text-sm font-bold hover:bg-secondary/90">
+                                    Seguir en Instagram
+                                </button>
+                                <button id="btnMapsFooter"
+                                    class="flex cursor-pointer items-center justify-center rounded-lg h-10 px-4 border border-secondary text-secondary dark:text-accent text-sm font-bold hover:bg-secondary/10">
+                                    Cómo llegar
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-800 text-center">
+                            <p class="text-sm text-gray-600 dark:text-gray-400">
+                                &copy; 2026 Donde Concha Car Wash & Café. Todos los derechos reservados.
+                            </p>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

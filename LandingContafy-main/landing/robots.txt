@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://donde-concha.vercel.app/sitemap.xml
