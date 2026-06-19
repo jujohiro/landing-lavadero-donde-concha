@@ -10,20 +10,27 @@ const WHATSAPP_MESSAGES = {
 const MAPS_URL = 'https://www.google.com/maps/search/?api=1&query=Avenida+Centenario+Calle+17+Norte+Armenia+Quindio+Colombia';
 const INSTAGRAM_URL = 'https://www.instagram.com/DONDECONCHACARWASH';
 
-// Reel oficial de Donde Concha Car Wash & Café
-const INSTAGRAM_EMBED_URL = 'https://www.instagram.com/reel/C61s6B5J42o/';
-
 const utils = {
+    validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+    },
+
     validatePhone(phone) {
         const re = /^[0-9]{10}$/;
         return re.test(phone.replace(/\s+/g, ''));
+    },
+
+    formatPhone(phone) {
+        return phone.replace(/\D/g, '');
     },
 
     showError(input, message) {
         const errorElement = document.getElementById(`${input.id}Error`);
         if (errorElement) {
             errorElement.textContent = message;
-            input.classList.add('border-red-500');
+            input.classList.add('border-red-500', 'dark:border-red-500');
+            input.classList.remove('border-gray-300', 'dark:border-gray-600');
         }
     },
 
@@ -31,17 +38,24 @@ const utils = {
         const errorElement = document.getElementById(`${input.id}Error`);
         if (errorElement) {
             errorElement.textContent = '';
-            input.classList.remove('border-red-500');
+            input.classList.remove('border-red-500', 'dark:border-red-500');
+            input.classList.add('border-gray-300', 'dark:border-gray-600');
         }
     },
 
     validateField(input) {
         const value = input.value.trim();
         let isValid = true;
+
         this.clearError(input);
 
         if (input.hasAttribute('required') && !value) {
             this.showError(input, 'Este campo es obligatorio');
+            isValid = false;
+        }
+
+        if (input.type === 'email' && value && !this.validateEmail(value)) {
+            this.showError(input, 'Ingresa un email válido');
             isValid = false;
         }
 
@@ -62,67 +76,39 @@ const utils = {
 const whatsapp = {
     openWhatsApp(type = 'contacto') {
         const message = encodeURIComponent(WHATSAPP_MESSAGES[type] || WHATSAPP_MESSAGES.contacto);
-        window.open(`${WHATSAPP_BASE_URL}${WHATSAPP_NUMBER}?text=${message}`, '_blank');
+        const url = `${WHATSAPP_BASE_URL}${WHATSAPP_NUMBER}?text=${message}`;
+        window.open(url, '_blank');
     },
 
     openWithMessage(message) {
-        window.open(`${WHATSAPP_BASE_URL}${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
+        const encodedMessage = encodeURIComponent(message);
+        const url = `${WHATSAPP_BASE_URL}${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+        window.open(url, '_blank');
     }
 };
 
-const instagram = {
-    createEmbed(url) {
-        const blockquote = document.createElement('blockquote');
-        blockquote.className = 'instagram-media';
-        blockquote.setAttribute('data-instgrm-permalink', url);
-        blockquote.setAttribute('data-instgrm-captioned', '');
-        blockquote.style.cssText = 'background:#FFF;border:0;border-radius:12px;margin:0 auto;max-width:540px;width:100%;';
-        return blockquote;
-    },
-
-    loadScript(callback) {
-        if (window.instgrm) {
-            callback();
-            return;
-        }
-        const existing = document.querySelector('script[src*="instagram.com/embed.js"]');
-        if (existing) {
-            existing.addEventListener('load', callback);
-            return;
-        }
-        const script = document.createElement('script');
-        script.async = true;
-        script.src = 'https://www.instagram.com/embed.js';
-        script.onload = callback;
-        document.body.appendChild(script);
-    },
-
+const theme = {
     init() {
-        if (!INSTAGRAM_EMBED_URL) return;
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-        const placeholder = document.getElementById('instagramPlaceholder');
-        const container = document.getElementById('instagramEmbedContainer');
-        const heroLogo = document.getElementById('heroLogoWrap');
-        const heroInstagram = document.getElementById('heroInstagramWrap');
-        const heroEmbed = document.getElementById('heroInstagramEmbed');
-
-        if (placeholder) placeholder.classList.add('hidden');
-
-        if (container) {
-            container.innerHTML = '';
-            container.appendChild(this.createEmbed(INSTAGRAM_EMBED_URL));
+        if (savedTheme) {
+            document.documentElement.classList.toggle('dark', savedTheme === 'dark');
+        } else {
+            document.documentElement.classList.toggle('dark', systemPrefersDark);
         }
 
-        if (heroLogo && heroInstagram && heroEmbed) {
-            heroLogo.classList.add('hidden');
-            heroInstagram.classList.remove('hidden');
-            heroEmbed.innerHTML = '';
-            heroEmbed.appendChild(this.createEmbed(INSTAGRAM_EMBED_URL));
+        const themeToggle = document.getElementById('themeToggle');
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => {
+                this.toggle();
+            });
         }
+    },
 
-        this.loadScript(() => {
-            if (window.instgrm) window.instgrm.Embeds.process();
-        });
+    toggle() {
+        const isDark = document.documentElement.classList.toggle('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
     }
 };
 
@@ -131,27 +117,39 @@ const navigation = {
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 const href = this.getAttribute('href');
-                if (href === '#') return;
+                if (href === '#' || href === '#header') return;
 
                 e.preventDefault();
                 const target = document.querySelector(href);
                 if (target) {
                     const header = document.querySelector('header');
                     const headerHeight = header ? header.offsetHeight : 0;
-                    window.scrollTo({ top: target.offsetTop - headerHeight, behavior: 'smooth' });
+                    const targetPosition = target.offsetTop - headerHeight;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+
                     menu.toggle(false);
-                    navigation.setActive(href);
+                    navigation.updateActiveState(href);
                 }
             });
         });
 
-        window.addEventListener('scroll', () => navigation.updateActiveOnScroll());
+        window.addEventListener('scroll', () => {
+            navigation.updateActiveOnScroll();
+        });
+
         navigation.updateActiveOnScroll();
     },
 
-    setActive(href) {
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.classList.toggle('active', link.getAttribute('href') === href);
+    updateActiveState(href) {
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.classList.remove('text-primary', 'dark:text-primary');
+            if (link.getAttribute('href') === href) {
+                link.classList.add('text-primary', 'dark:text-primary');
+            }
         });
     },
 
@@ -159,63 +157,98 @@ const navigation = {
         const sections = document.querySelectorAll('section[id]');
         const header = document.querySelector('header');
         const headerHeight = header ? header.offsetHeight : 0;
-        const scrollPosition = window.scrollY + headerHeight + 120;
+        const scrollPosition = window.scrollY + headerHeight + 100;
 
-        let current = '#inicio';
         sections.forEach(section => {
-            if (scrollPosition >= section.offsetTop) {
-                current = `#${section.getAttribute('id')}`;
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                document.querySelectorAll('a[href^="#"]').forEach(link => {
+                    link.classList.remove('text-primary', 'dark:text-primary');
+                    if (link.getAttribute('href') === `#${sectionId}`) {
+                        link.classList.add('text-primary', 'dark:text-primary');
+                    }
+                });
             }
         });
-        navigation.setActive(current);
     }
 };
 
 const menu = {
     init() {
         const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
         const closeMenu = document.getElementById('closeMenu');
         const menuOverlay = document.getElementById('menuOverlay');
-        const navMenu = document.getElementById('navMenu');
 
-        if (menuToggle) menuToggle.addEventListener('click', () => this.toggle());
-        if (closeMenu) closeMenu.addEventListener('click', () => this.toggle(false));
-        if (menuOverlay) menuOverlay.addEventListener('click', () => this.toggle(false));
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', () => {
+                this.toggle();
+            });
 
-        if (navMenu) {
+            if (closeMenu) {
+                closeMenu.addEventListener('click', () => {
+                    this.toggle(false);
+                });
+            }
+
+            if (menuOverlay) {
+                menuOverlay.addEventListener('click', () => {
+                    this.toggle(false);
+                });
+            }
+
             navMenu.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => this.toggle(false));
+                link.addEventListener('click', () => {
+                    this.toggle(false);
+                });
             });
         }
     },
 
     toggle(force) {
+        const menuToggle = document.getElementById('menuToggle');
         const navMenu = document.getElementById('navMenu');
         const menuOverlay = document.getElementById('menuOverlay');
-        const menuToggle = document.getElementById('menuToggle');
 
-        if (!navMenu) return;
+        if (navMenu) {
+            const isActive = !navMenu.classList.contains('translate-x-full');
+            const shouldBeActive = force !== undefined ? force : !isActive;
 
-        const shouldOpen = force !== undefined ? force : navMenu.classList.contains('translate-x-full');
-
-        if (shouldOpen) {
-            navMenu.classList.remove('translate-x-full');
-            menuOverlay?.classList.replace('opacity-0', 'opacity-100');
-            menuOverlay?.classList.replace('invisible', 'visible');
-            menuToggle?.setAttribute('aria-expanded', 'true');
-            document.body.style.overflow = 'hidden';
-        } else {
-            navMenu.classList.add('translate-x-full');
-            menuOverlay?.classList.replace('opacity-100', 'opacity-0');
-            menuOverlay?.classList.replace('visible', 'invisible');
-            menuToggle?.setAttribute('aria-expanded', 'false');
-            document.body.style.overflow = '';
+            if (shouldBeActive) {
+                navMenu.classList.remove('translate-x-full');
+                if (menuOverlay) {
+                    menuOverlay.classList.remove('opacity-0', 'invisible');
+                    menuOverlay.classList.add('opacity-100', 'visible');
+                }
+                if (menuToggle) {
+                    menuToggle.setAttribute('aria-expanded', 'true');
+                }
+                document.body.style.overflow = 'hidden';
+            } else {
+                navMenu.classList.add('translate-x-full');
+                if (menuOverlay) {
+                    menuOverlay.classList.add('opacity-0', 'invisible');
+                    menuOverlay.classList.remove('opacity-100', 'visible');
+                }
+                if (menuToggle) {
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                }
+                document.body.style.overflow = '';
+            }
         }
     }
 };
 
 const scrollAnimations = {
     init() {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -223,7 +256,7 @@ const scrollAnimations = {
                     observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        }, observerOptions);
 
         document.querySelectorAll('.feature-card, .description-item, .benefit-card, .pricing-card').forEach(el => {
             observer.observe(el);
@@ -234,33 +267,47 @@ const scrollAnimations = {
 const forms = {
     init() {
         const demoForm = document.getElementById('demoForm');
-        if (!demoForm) return;
+        if (demoForm) {
+            demoForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                this.handleReservation(demoForm);
+            });
 
-        demoForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            this.handleReservation(demoForm);
-        });
-
-        demoForm.querySelectorAll('input, textarea, select').forEach(input => {
-            input.addEventListener('blur', () => utils.validateField(input));
-        });
+            demoForm.querySelectorAll('input, textarea, select').forEach(input => {
+                input.addEventListener('blur', () => {
+                    utils.validateField(input);
+                });
+            });
+        }
     },
 
     validateForm(form) {
         let isValid = true;
-        form.querySelectorAll('input[required], textarea[required], select[required]').forEach(input => {
-            if (!utils.validateField(input)) isValid = false;
+        const inputs = form.querySelectorAll('input[required], textarea[required], select[required]');
+
+        inputs.forEach(input => {
+            if (!utils.validateField(input)) {
+                isValid = false;
+            }
         });
+
         return isValid;
     },
 
     showMessage(type, message) {
-        const el = document.getElementById('demoFormMessage');
-        if (!el) return;
+        const messageElement = document.getElementById('demoFormMessage');
+        if (messageElement) {
+            messageElement.classList.remove('hidden', 'bg-green-100', 'text-green-800', 'bg-red-100', 'text-red-800', 'dark:bg-green-900', 'dark:text-green-200', 'dark:bg-red-900', 'dark:text-red-200');
 
-        el.className = 'mt-2 p-4 rounded-lg text-center font-medium text-sm';
-        el.classList.add(type === 'success' ? 'bg-green-900/50 text-green-300' : 'bg-red-900/50 text-red-300');
-        el.textContent = message;
+            if (type === 'success') {
+                messageElement.classList.add('bg-green-100', 'text-green-800', 'dark:bg-green-900', 'dark:text-green-200');
+            } else {
+                messageElement.classList.add('bg-red-100', 'text-red-800', 'dark:bg-red-900', 'dark:text-red-200');
+            }
+
+            messageElement.textContent = message;
+            messageElement.classList.remove('hidden');
+        }
     },
 
     handleReservation(form) {
@@ -276,8 +323,14 @@ const forms = {
         const message = document.getElementById('demoMessage').value.trim();
 
         let text = `Hola, quiero agendar un servicio en Donde Concha Car Wash & Café.\n\n`;
-        text += `*Nombre:* ${name}\n*Teléfono:* ${phone}\n*Vehículo:* ${vehicle}\n*Servicio:* ${service}`;
-        if (message) text += `\n*Mensaje:* ${message}`;
+        text += `*Nombre:* ${name}\n`;
+        text += `*Teléfono:* ${phone}\n`;
+        text += `*Vehículo:* ${vehicle}\n`;
+        text += `*Servicio:* ${service}`;
+
+        if (message) {
+            text += `\n*Mensaje:* ${message}`;
+        }
 
         whatsapp.openWithMessage(text);
         this.showMessage('success', 'Te estamos redirigiendo a WhatsApp para confirmar tu reserva.');
@@ -287,45 +340,57 @@ const forms = {
 
 const buttons = {
     init() {
-        const scrollTo = (id) => {
+        const scrollToSection = (id) => {
             const section = document.getElementById(id);
-            if (!section) return;
-            const header = document.querySelector('header');
-            const h = header ? header.offsetHeight : 0;
-            window.scrollTo({ top: section.offsetTop - h, behavior: 'smooth' });
-            menu.toggle(false);
+            if (section) {
+                const header = document.querySelector('header');
+                const headerHeight = header ? header.offsetHeight : 0;
+                window.scrollTo({ top: section.offsetTop - headerHeight, behavior: 'smooth' });
+                menu.toggle(false);
+            }
         };
 
-        ['btnSolicitarDemo', 'btnSolicitarDemoMobile', 'btnHeroReservar', 'btnFooterReservar'].forEach(id => {
-            const btn = document.getElementById(id);
-            if (btn) btn.addEventListener('click', () => scrollTo('contacto'));
-        });
+        const btnReservar = document.getElementById('btnSolicitarDemo');
+        const btnReservarMobile = document.getElementById('btnSolicitarDemoMobile');
 
-        [
+        if (btnReservar) btnReservar.addEventListener('click', () => scrollToSection('contacto'));
+        if (btnReservarMobile) btnReservarMobile.addEventListener('click', () => scrollToSection('contacto'));
+
+        const whatsappButtons = [
+            ['btnContactoWhatsApp', 'contacto'],
             ['btnContactoWhatsAppMobile', 'contacto'],
             ['btnHeroWhatsApp', 'reservar'],
             ['btnFooterContacto', 'contacto'],
-            ['btnFloatWhatsApp', 'contacto']
-        ].forEach(([id, type]) => {
+            ['btnFooterReservar', 'reservar']
+        ];
+
+        whatsappButtons.forEach(([id, type]) => {
             const btn = document.getElementById(id);
-            if (btn) btn.addEventListener('click', () => whatsapp.openWhatsApp(type));
+            if (btn) {
+                btn.addEventListener('click', () => whatsapp.openWhatsApp(type));
+            }
         });
 
-        ['btnMaps', 'btnMapsFooter'].forEach(id => {
+        const mapsButtons = ['btnMaps', 'btnMapsFooter'];
+        mapsButtons.forEach(id => {
             const btn = document.getElementById(id);
-            if (btn) btn.addEventListener('click', () => window.open(MAPS_URL, '_blank'));
+            if (btn) {
+                btn.addEventListener('click', () => window.open(MAPS_URL, '_blank'));
+            }
         });
 
         const btnInstagram = document.getElementById('btnInstagram');
-        if (btnInstagram) btnInstagram.addEventListener('click', () => window.open(INSTAGRAM_URL, '_blank'));
+        if (btnInstagram) {
+            btnInstagram.addEventListener('click', () => window.open(INSTAGRAM_URL, '_blank'));
+        }
     }
 };
 
 document.addEventListener('DOMContentLoaded', () => {
+    theme.init();
     navigation.init();
     menu.init();
     scrollAnimations.init();
     forms.init();
     buttons.init();
-    instagram.init();
 });
