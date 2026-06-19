@@ -28,7 +28,7 @@ landing/
 ├── index.html
 ├── js/main.js
 ├── css/styles.css
-├── images/logo-donde-concha.svg
+├── images/logoDondeConcha.jpg
 ├── vercel.json
 └── README.md
 ```
@@ -44,11 +44,7 @@ landing/
 
 ## Logo
 
-El logo actual es un SVG placeholder con los colores de marca. Reemplázalo por tu PNG oficial en:
-
-`images/logo-donde-concha.png`
-
-Y actualiza las referencias en `index.html` si usas PNG.
+El logo oficial está en `images/logoDondeConcha.jpg`.
 
 ## Personalización
 
