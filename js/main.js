@@ -7,7 +7,7 @@ const WHATSAPP_MESSAGES = {
     soporte: 'Hola, tengo una consulta sobre mi servicio en Donde Concha.'
 };
 
-const MAPS_URL = 'https://www.google.com/maps/search/?api=1&query=Cra.+6+%2317+Norte+-56+Armenia+Quindio+Colombia';
+const MAPS_URL = 'https://www.google.com/maps/place/Donde+Concha+Car+Detailing+y+Caf%C3%A9/@4.554637,-75.651507,17z';
 const INSTAGRAM_URL = 'https://www.instagram.com/DONDECONCHACARWASH';
 
 const utils = {
