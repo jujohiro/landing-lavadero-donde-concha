@@ -16,7 +16,7 @@ Landing page para **Donde Concha Car Wash & Café**, lavadero en Armenia, Quind�
 
 | Campo | Valor |
 |---|---|
-| Dirección | Av. Centenario con Calle 17 Norte, Armenia, Quindío |
+| Dirección | Cra. 6 #17 Norte -56, Armenia, Quindío |
 | WhatsApp | +57 310 462 2183 |
 | Horario | Lun – Dom, 7:00 a.m. – 7:00 p.m. |
 | Instagram | @DONDECONCHACARWASH |
